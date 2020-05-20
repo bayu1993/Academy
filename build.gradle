@@ -23,6 +23,7 @@ buildscript {
         junitVersion = '4.12'
         espressoVersion = '3.1.0'
         archLifecycleVersion = '2.2.0'
+        androidXTestVersion = '1.2.0'
 
         materialVersion = '1.0.0'
         recyclerViewVersion = '1.1.0'
