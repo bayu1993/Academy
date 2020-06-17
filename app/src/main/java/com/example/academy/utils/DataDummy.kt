@@ -171,6 +171,17 @@ object DataDummy {
 
         tvShowList.add(
             TvShowEntity(
+                id = 60625,
+                popularity = 128.463,
+                poster_path = "https://image.tmdb.org/t/p/w500/8kOWDBK6XlPUzckuHDo3wwVRFwt.jpg",
+                overview = "Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+                name = "Rick and Morty",
+                first_air_date = "2013-12-02"
+            )
+        )
+
+        tvShowList.add(
+            TvShowEntity(
                 id = 1622,
                 popularity = 114.544,
                 poster_path = "https://image.tmdb.org/t/p/w500/KoYWXbnYuS3b0GyQPkbuexlVK9.jpg",
@@ -180,6 +191,49 @@ object DataDummy {
             )
         )
 
+        tvShowList.add(
+            TvShowEntity(
+                id = 1396,
+                popularity = 112.885,
+                poster_path = "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+                overview = "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+                name = "Breaking Bad",
+                first_air_date = "2008-01-20"
+            )
+        )
+
+        tvShowList.add(
+            TvShowEntity(
+                id = 79680,
+                popularity = 111.862,
+                poster_path = "https://image.tmdb.org/t/p/w500/n6UNHZoiYj81abwmG38HbNjflDx.jpg",
+                overview = "Set more than seven years after the world has become a frozen wasteland, the remnants of humanity inhabit a gigantic, perpetually-moving train that circles the globe as class warfare, social injustice and the politics of survival play out. ",
+                name = "Snowpiercer",
+                first_air_date = "2020-05-17"
+            )
+        )
+
+        tvShowList.add(
+            TvShowEntity(
+                id = 66017,
+                popularity = 110.045,
+                poster_path = "https://image.tmdb.org/t/p/w500/rOar34cNLn2sgDH5FmAa1bvMpBv.jpg",
+                overview = "Ertuğrul Bey and the Knights Templar in the 13th century Alba and step and step with the struggle against brutal Mongols depicts the process of establishing the Ottoman principality.",
+                name = "Resurrection: Ertugrul",
+                first_air_date = "2014-12-11"
+            )
+        )
+
+        tvShowList.add(
+            TvShowEntity(
+                id = 48866,
+                popularity = 106.805,
+                poster_path = "https://image.tmdb.org/t/p/w500/wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg",
+                overview = "100 years in the future, when the Earth has been abandoned due to radioactivity, the last surviving humans live on an ark orbiting the planet — but the ark won't last forever. So the repressive regime picks 100 expendable juvenile delinquents to send down to Earth to see if the planet is still habitable.",
+                name = "The 100",
+                first_air_date = "2014-03-19"
+            )
+        )
         return tvShowList
     }
 }
