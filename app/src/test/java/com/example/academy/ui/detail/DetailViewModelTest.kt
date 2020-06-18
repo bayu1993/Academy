@@ -6,21 +6,21 @@ import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Before
 
-class DetailCourseViewModelTest {
+class DetailViewModelTest {
 
-    private lateinit var viewModel: DetailCourseViewModel
+    private lateinit var viewModel: DetailViewModel
     private val dummyCourse = DataDummy.generateDummyCourses()[0]
     private val courseId = dummyCourse.courseId
 
     @Before
     fun setUp(){
-        viewModel = DetailCourseViewModel()
-        viewModel.setSelectedCourse(courseId)
+        viewModel = DetailViewModel()
+        viewModel.setSelectedMovie(courseId)
     }
     @Test
     fun getCourse() {
-        viewModel.setSelectedCourse(dummyCourse.courseId)
-        val courseEntity = viewModel.getCourse()
+        viewModel.setSelectedMovie(dummyCourse.courseId)
+        val courseEntity = viewModel.getMovie()
         assertNotNull(courseEntity)
         assertEquals(dummyCourse.courseId, courseEntity.courseId)
         assertEquals(dummyCourse.title, courseEntity.title)

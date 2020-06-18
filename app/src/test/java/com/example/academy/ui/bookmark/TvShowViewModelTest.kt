@@ -5,18 +5,18 @@ import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Before
 
-class BookmarkViewModelTest {
+class TvShowViewModelTest {
 
-    private lateinit var viewModel: BookmarkViewModel
+    private lateinit var viewModel: TvShowViewModel
 
     @Before
     fun setUp(){
-        viewModel = BookmarkViewModel()
+        viewModel = TvShowViewModel()
     }
 
     @Test
     fun getBookmarks() {
-        val courseEntities = viewModel.getBookmarks()
+        val courseEntities = viewModel.getTvShow()
         assertNotNull(courseEntities)
         assertEquals(5, courseEntities.size)
     }

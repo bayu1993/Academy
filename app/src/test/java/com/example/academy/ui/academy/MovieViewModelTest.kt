@@ -5,13 +5,13 @@ import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Before
 
-class AcademyViewModelTest {
+class MovieViewModelTest {
 
-    private lateinit var viewModel: AcademyViewModel
+    private lateinit var viewModel: MovieViewModel
 
     @Before
     fun setUp(){
-        viewModel = AcademyViewModel()
+        viewModel = MovieViewModel()
     }
 
     @Test

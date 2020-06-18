@@ -3,7 +3,7 @@ package com.example.academy.ui.academy
 import androidx.lifecycle.ViewModel
 import com.example.academy.utils.DataDummy
 
-class AcademyViewModel: ViewModel() {
+class MovieViewModel: ViewModel() {
 
-    fun getCourses() = DataDummy.generateDummyCourses()
+    fun getMovies() = DataDummy.generateDummyMovieList()
 }
