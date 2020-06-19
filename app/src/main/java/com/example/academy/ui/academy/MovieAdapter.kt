@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.academy.R
 import com.example.academy.data.MovieEntity
 import com.example.academy.ui.detail.DetailCourseActivity
+import com.example.academy.utils.DataDummy
 import kotlinx.android.synthetic.main.items_academy.view.*
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
@@ -42,7 +43,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             with(itemView) {
                 tv_item_title.text = movie.title
                 tv_item_description.text = movie.popularity.toString()
-                tv_item_date.text = resources.getString(R.string.deadline_date, movie.release_date)
+                tv_item_date.text = DataDummy.getDisplayDate(movie.release_date)
                 setOnClickListener {
                     val intent = Intent(context, DetailCourseActivity::class.java).apply {
                         putExtra(DetailCourseActivity.EXTRA_MOVIE, movie.id)

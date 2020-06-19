@@ -2,6 +2,9 @@ package com.example.academy.utils
 
 import com.example.academy.data.MovieEntity
 import com.example.academy.data.TvShowEntity
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 object DataDummy {
     fun generateDummyMovieList(): List<MovieEntity> {
@@ -235,5 +238,12 @@ object DataDummy {
             )
         )
         return tvShowList
+    }
+
+    fun getDisplayDate(dateEvent: String) : String {
+        val localeId = Locale("in")
+        val date = SimpleDateFormat("yyyy-MM-dd", localeId).parse(dateEvent)
+        val format = SimpleDateFormat("EEEE, dd MMMM yyyy",localeId)
+        return format.format(date)
     }
 }

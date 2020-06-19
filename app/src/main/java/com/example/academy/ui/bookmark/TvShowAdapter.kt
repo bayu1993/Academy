@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.academy.R
 import com.example.academy.data.TvShowEntity
 import com.example.academy.ui.detail.DetailCourseActivity
+import com.example.academy.utils.DataDummy
 import kotlinx.android.synthetic.main.items_bookmark.view.*
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
@@ -42,8 +43,7 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
             with(itemView) {
                 tv_item_title.text = tvShow.name
                 tv_item_description.text = tvShow.popularity.toString()
-                tv_item_date.text =
-                    resources.getString(R.string.deadline_date, tvShow.first_air_date)
+                tv_item_date.text = DataDummy.getDisplayDate(tvShow.first_air_date)
                 setOnClickListener {
                     val intent = Intent(context, DetailCourseActivity::class.java).apply {
                         putExtra(DetailCourseActivity.EXTRA_TV_SHOW, tvShow.id)

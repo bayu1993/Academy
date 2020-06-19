@@ -14,7 +14,7 @@ import org.junit.Test
 
 
 class HomeActivityTest {
-    private val dummyCourse = DataDummy.generateDummyCourses()
+    private val dummyCourse = DataDummy.generateDummyMovieList()
 
     @get:Rule
     var activityRule = ActivityTestRule(HomeActivity::class.java)
@@ -40,7 +40,7 @@ class HomeActivityTest {
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyCourse[0].title)))
         onView(withId(R.id.text_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_date)).check(matches(withText("Deadline ${dummyCourse[0].deadline}")))
+        onView(withId(R.id.text_date)).check(matches(withText("Deadline ${dummyCourse[0].release_date}")))
     }
 
     @Test

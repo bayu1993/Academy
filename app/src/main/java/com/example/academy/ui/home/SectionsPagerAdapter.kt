@@ -29,6 +29,6 @@ class SectionsPagerAdapter(private val context: Context, private val fm: Fragmen
 
     companion object {
         @StringRes
-        private val TAB_TITLES = intArrayOf(R.string.home, R.string.bookmark)
+        private val TAB_TITLES = intArrayOf(R.string.movie, R.string.tv_show)
     }
 }
