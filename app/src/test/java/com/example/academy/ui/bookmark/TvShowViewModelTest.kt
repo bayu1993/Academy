@@ -15,9 +15,9 @@ class TvShowViewModelTest {
     }
 
     @Test
-    fun getBookmarks() {
-        val courseEntities = viewModel.getTvShow()
-        assertNotNull(courseEntities)
-        assertEquals(5, courseEntities.size)
+    fun getTvShow() {
+        val tvShowEntities = viewModel.getTvShow()
+        assertNotNull(tvShowEntities)
+        assertEquals(10, tvShowEntities.size)
     }
 }

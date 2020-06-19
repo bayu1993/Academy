@@ -9,30 +9,41 @@ import org.junit.Before
 class DetailViewModelTest {
 
     private lateinit var viewModel: DetailViewModel
-    private val dummyCourse = DataDummy.generateDummyCourses()[0]
-    private val courseId = dummyCourse.courseId
+    private val dummyMovie = DataDummy.generateDummyMovieList()[0]
+    private val dummyTvShow = DataDummy.generateDummyTvShow()[0]
+    private val movieId = dummyMovie.id
+    private val tvShowId = dummyTvShow.id
 
     @Before
     fun setUp(){
         viewModel = DetailViewModel()
-        viewModel.setSelectedMovie(courseId)
+        viewModel.setSelectedMovie(movieId)
+        viewModel.setSelectedTvShow(tvShowId)
     }
     @Test
-    fun getCourse() {
-        viewModel.setSelectedMovie(dummyCourse.courseId)
-        val courseEntity = viewModel.getMovie()
-        assertNotNull(courseEntity)
-        assertEquals(dummyCourse.courseId, courseEntity.courseId)
-        assertEquals(dummyCourse.title, courseEntity.title)
-        assertEquals(dummyCourse.description, courseEntity.description)
-        assertEquals(dummyCourse.deadline, courseEntity.deadline)
-        assertEquals(dummyCourse.imagePath, courseEntity.imagePath)
+    fun getMovie() {
+        viewModel.setSelectedMovie(dummyMovie.id)
+        val movieEntity = viewModel.getMovie()
+        assertNotNull(movieEntity)
+        assertEquals(dummyMovie.id, movieEntity.id)
+        assertEquals(dummyMovie.title, movieEntity.title)
+        assertEquals(dummyMovie.release_date, movieEntity.release_date)
+        assertEquals(dummyMovie.poster_path, movieEntity.poster_path)
+        assertEquals(dummyMovie.overview, movieEntity.overview)
+        assertEquals(dummyMovie.popularity, movieEntity.popularity,0.0)
     }
 
     @Test
-    fun getModules() {
-        val moduleEntities = viewModel.getModules()
-        assertNotNull(moduleEntities)
-        assertEquals(7,moduleEntities.size)
+    fun getTvShow() {
+        viewModel.setSelectedTvShow(dummyTvShow.id)
+        val tvShowEntity = viewModel.getTvShow()
+        assertNotNull(tvShowEntity)
+        assertEquals(dummyTvShow.id, tvShowEntity.id)
+        assertEquals(dummyTvShow.name, tvShowEntity.name)
+        assertEquals(dummyTvShow.first_air_date, tvShowEntity.first_air_date)
+        assertEquals(dummyTvShow.poster_path, tvShowEntity.poster_path)
+        assertEquals(dummyTvShow.overview, tvShowEntity.overview)
+        assertEquals(dummyTvShow.popularity, tvShowEntity.popularity,0.0)
     }
+
 }

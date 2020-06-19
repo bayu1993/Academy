@@ -19,7 +19,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.academy.ui.home.HomeActivity"/>
         </activity>
-        <activity android:name="com.example.academy.ui.reader.CourseReaderActivity" />
         <activity android:name="com.example.academy.ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

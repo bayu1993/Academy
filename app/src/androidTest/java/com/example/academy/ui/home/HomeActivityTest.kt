@@ -14,23 +14,24 @@ import org.junit.Test
 
 
 class HomeActivityTest {
-    private val dummyCourse = DataDummy.generateDummyMovieList()
+    private val dummyMovie = DataDummy.generateDummyMovieList()
+    private val dummyTvShow = DataDummy.generateDummyTvShow()
 
     @get:Rule
     var activityRule = ActivityTestRule(HomeActivity::class.java)
 
     @Test
-    fun loadCourse() {
+    fun loadMovies() {
         onView(withId(R.id.rv_academy)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_academy)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
-                dummyCourse.size
+                dummyMovie.size
             )
         )
     }
 
     @Test
-    fun loadDetailCourse() {
+    fun loadDetail() {
         onView(withId(R.id.rv_academy)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
@@ -38,30 +39,21 @@ class HomeActivityTest {
             )
         )
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_title)).check(matches(withText(dummyCourse[0].title)))
+        onView(withId(R.id.text_title)).check(matches(withText(dummyMovie[0].title)))
+        onView(withId(R.id.tv_popular)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_popular)).check(matches(withText(dummyMovie[0].popularity.toString())))
         onView(withId(R.id.text_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_date)).check(matches(withText("Deadline ${dummyCourse[0].release_date}")))
+        onView(withId(R.id.text_date)).check(matches(withText(DataDummy.getDisplayDate(dummyMovie[0].release_date))))
     }
 
     @Test
-    fun loadModule(){
-        onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-        onView(withId(R.id.btn_start)).perform(click())
-        onView(withId(R.id.rv_module)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun loadDetailModule() {
-        onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-        onView(withId(R.id.btn_start)).perform(click())
-        onView(withId(R.id.rv_module)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-        onView(withId(R.id.web_view)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun loadBookmarks() {
-        onView(withText("Bookmark")).perform(click())
+    fun loadTvShow() {
+        onView(withText("Tv Show")).perform(click())
         onView(withId(R.id.rv_bookmark)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_bookmark)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyCourse.size))
+        onView(withId(R.id.rv_bookmark)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                dummyTvShow.size
+            )
+        )
     }
 }

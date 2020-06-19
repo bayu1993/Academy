@@ -9,7 +9,7 @@ import com.example.academy.R
 import com.example.academy.ui.academy.AcademyFragment
 import com.example.academy.ui.bookmark.BookmarkFragment
 
-class SectionsPagerAdapter(private val context: Context, private val fm: FragmentManager) :
+class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
