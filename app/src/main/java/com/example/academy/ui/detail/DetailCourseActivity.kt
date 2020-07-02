@@ -12,6 +12,7 @@ import com.example.academy.R
 import com.example.academy.data.CourseEntity
 import com.example.academy.ui.reader.CourseReaderActivity
 import com.example.academy.utils.DataDummy
+import com.example.academy.utils.viewmodel.ViewModelFactory
 
 import kotlinx.android.synthetic.main.activity_detail_course.*
 import kotlinx.android.synthetic.main.content_detail_course.*
@@ -25,12 +26,13 @@ class DetailCourseActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailCourseViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[DetailCourseViewModel::class.java]
         val adapter = DetailCourseAdapter()
         val extras = intent.extras
-        if (extras != null){
+        if (extras != null) {
             val courseId = extras.getString(EXTRA_COURSE)
-            if (courseId!=null){
+            if (courseId != null) {
                 viewModel.setSelectedCourse(courseId)
                 val modules = viewModel.getModules()
                 adapter.setModules(modules)
@@ -38,17 +40,18 @@ class DetailCourseActivity : AppCompatActivity() {
             }
         }
 
-        with(rv_module){
+        with(rv_module) {
             isNestedScrollingEnabled = true
             layoutManager = LinearLayoutManager(this@DetailCourseActivity)
             setHasFixedSize(true)
             this.adapter = adapter
-            val dividerItemDecoration = DividerItemDecoration(rv_module.context,DividerItemDecoration.VERTICAL)
+            val dividerItemDecoration =
+                DividerItemDecoration(rv_module.context, DividerItemDecoration.VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }
     }
 
-    private fun populateCourse(course: CourseEntity){
+    private fun populateCourse(course: CourseEntity) {
         text_title.text = course.title
         text_desc.text = course.description
         text_date.text = resources.getString(R.string.deadline_date, course.deadline)
@@ -57,14 +60,14 @@ class DetailCourseActivity : AppCompatActivity() {
             .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
             .into(image_poster)
         btn_start.setOnClickListener {
-            val intent = Intent(this,CourseReaderActivity::class.java).apply {
+            val intent = Intent(this, CourseReaderActivity::class.java).apply {
                 putExtra(CourseReaderActivity.EXTRA_COURSE_ID, course.courseId)
             }
             startActivity(intent)
         }
     }
 
-    companion object{
+    companion object {
         const val EXTRA_COURSE = "EXTRA_COURSE"
     }
 

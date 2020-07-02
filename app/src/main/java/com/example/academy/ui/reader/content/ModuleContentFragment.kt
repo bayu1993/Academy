@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.academy.R
 import com.example.academy.data.ModuleEntity
 import com.example.academy.ui.reader.CourseReaderViewModel
+import com.example.academy.utils.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_module_content.*
 
 /**
@@ -24,25 +25,27 @@ class ModuleContentFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_module_content, container, false)
     }
 
-    companion object{
+    companion object {
         val TAG = ModuleContentFragment::class.java.simpleName
 
-        fun newInstance(): ModuleContentFragment{
+        fun newInstance(): ModuleContentFragment {
             return ModuleContentFragment()
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (activity!=null){
-            val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
+        if (activity != null) {
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel =
+                ViewModelProvider(requireActivity(), factory)[CourseReaderViewModel::class.java]
             val module = viewModel.getSelectedModule()
             populateWebView(module)
         }
     }
 
-    private fun populateWebView(module: ModuleEntity){
-        web_view.loadData(module.contentEntity?.content, "text/html","UTF-8")
+    private fun populateWebView(module: ModuleEntity) {
+        web_view.loadData(module.contentEntity?.content, "text/html", "UTF-8")
     }
 
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.academy.R
 import com.example.academy.ui.reader.content.ModuleContentFragment
 import com.example.academy.ui.reader.list.ModuleListFragment
+import com.example.academy.utils.viewmodel.ViewModelFactory
 
 class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
 
@@ -14,7 +15,8 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_reader)
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[CourseReaderViewModel::class.java]
 
         val bundle = intent.extras
         if (bundle != null) {
@@ -39,7 +41,8 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
 
     override fun moveTo(position: Int, moduleId: String) {
         val fragment = ModuleContentFragment.newInstance()
-        supportFragmentManager.beginTransaction().add(R.id.frame_container, fragment, ModuleContentFragment.TAG)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame_container, fragment, ModuleContentFragment.TAG)
             .addToBackStack(null)
             .commit()
     }
@@ -52,7 +55,7 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
         }
     }
 
-    companion object{
+    companion object {
         const val EXTRA_COURSE_ID = "EXTRA_COURSE_ID"
     }
 }
