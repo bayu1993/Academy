@@ -1,6 +1,7 @@
 package com.example.academy.ui.academy
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,8 @@ class AcademyFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = academyAdapter
             }
+
+            Log.d("cek data", "data >>>> ${dataCourse.size}")
         }
     }
 }
