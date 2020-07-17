@@ -1,5 +1,6 @@
 package com.example.academy.ui.reader
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.academy.data.ContentEntity
 import com.example.academy.data.ModuleEntity
@@ -18,7 +19,7 @@ class CourseReaderViewModel(private val repo: AcademyRepository) : ViewModel(){
         this.moduleId = moduleId
     }
 
-    fun getModules() = repo.allModulesByCourse(courseId)
+    fun getModules() : LiveData<List<ModuleEntity>> = repo.allModulesByCourse(courseId)
 
-    fun getSelectedModule() = repo.getContent(courseId, moduleId)
+    fun getSelectedModule() : LiveData<ModuleEntity> = repo.getContent(courseId, moduleId)
 }

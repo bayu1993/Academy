@@ -2,11 +2,13 @@ package com.example.academy.ui.bookmark
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.academy.R
@@ -29,9 +31,14 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
             val viewModel = ViewModelProvider(this, factory)[BookmarkViewModel::class.java]
-            val dataCourse = viewModel.getBookmarks()
             val bookmarkAdapter = BookmarkAdapter(this)
-            bookmarkAdapter.setCourseList(dataCourse)
+            progress_bar.visibility = View.VISIBLE
+            viewModel.getBookmarks().observe(this, Observer { courses ->
+                progress_bar.visibility = View.GONE
+                bookmarkAdapter.setCourseList(courses)
+                Log.d("cek data bookmark", "data bookmark size >>>> ${courses.size}")
+
+            })
 
             with(rv_bookmark) {
                 layoutManager = LinearLayoutManager(context)
