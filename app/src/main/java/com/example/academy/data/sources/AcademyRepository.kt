@@ -1,5 +1,6 @@
 package com.example.academy.data.sources
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.academy.data.ContentEntity
@@ -40,6 +41,7 @@ class AcademyRepository private constructor(private val remoteDataSource: Remote
 
                     courseList.add(courseEntity)
                 }
+                Log.d("cek data course", "data >>> ${courseList.size}")
                 courseResult.postValue(courseList)
             }
 

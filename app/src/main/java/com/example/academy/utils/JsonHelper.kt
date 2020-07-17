@@ -1,6 +1,7 @@
 package com.example.academy.utils
 
 import android.content.Context
+import android.util.Log
 import com.example.academy.data.sources.remote.response.ContentResponse
 import com.example.academy.data.sources.remote.response.CourseResponse
 import com.example.academy.data.sources.remote.response.ModuleResponse
@@ -39,8 +40,10 @@ class JsonHelper(private val context: Context) {
                 val courseResponse = CourseResponse(id, title, desc, date, imagePath)
                 list.add(courseResponse)
             }
+            Log.d("cek data jsonhelper", "data >>> ${list.size}")
         } catch (e: JSONException) {
             e.printStackTrace()
+            Log.e("cek data jsonhelper", "error >>> ${e.localizedMessage}")
         }
         return list
     }
