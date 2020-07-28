@@ -1,6 +1,5 @@
 package com.example.academy.data.sources
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.academy.data.ContentEntity

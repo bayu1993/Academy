@@ -2,10 +2,10 @@ package com.example.academy.ui.reader.list
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,7 +15,6 @@ import com.example.academy.data.ModuleEntity
 import com.example.academy.ui.reader.CourseReaderActivity
 import com.example.academy.ui.reader.CourseReaderCallback
 import com.example.academy.ui.reader.CourseReaderViewModel
-import com.example.academy.utils.DataDummy
 import com.example.academy.utils.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_module_list.*
 

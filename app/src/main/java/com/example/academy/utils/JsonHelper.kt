@@ -14,7 +14,7 @@ class JsonHelper(private val context: Context) {
         return try {
             val `is` = context.assets.open(filename)
             val buffer = ByteArray(`is`.available())
-            `is`.read()
+            `is`.read(buffer)
             `is`.close()
             String(buffer)
 

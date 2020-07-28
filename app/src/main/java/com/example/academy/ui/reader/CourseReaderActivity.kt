@@ -1,8 +1,7 @@
 package com.example.academy.ui.reader
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.academy.R
 import com.example.academy.ui.reader.content.ModuleContentFragment

@@ -13,9 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.academy.R
 import com.example.academy.data.CourseEntity
 import com.example.academy.ui.reader.CourseReaderActivity
-import com.example.academy.utils.DataDummy
 import com.example.academy.utils.viewmodel.ViewModelFactory
-
 import kotlinx.android.synthetic.main.activity_detail_course.*
 import kotlinx.android.synthetic.main.content_detail_course.*
 

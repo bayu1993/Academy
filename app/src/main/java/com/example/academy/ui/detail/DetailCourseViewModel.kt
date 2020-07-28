@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.academy.data.CourseEntity
 import com.example.academy.data.ModuleEntity
 import com.example.academy.data.sources.AcademyRepository
-import com.example.academy.utils.DataDummy
 
 class DetailCourseViewModel(private val repo:AcademyRepository): ViewModel() {
     private lateinit var courseId:String
