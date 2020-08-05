@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.academy.BuildConfig
 import com.example.academy.R
 import com.example.academy.data.MovieEntity
 import com.example.academy.ui.detail.DetailCourseActivity
@@ -52,7 +53,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
                     context.startActivity(intent)
                 }
                 Glide.with(context)
-                    .load(movie.poster_path)
+                    .load("${BuildConfig.BASE_URL}${movie.poster_path}")
                     .apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
                             .error(R.drawable.ic_error)

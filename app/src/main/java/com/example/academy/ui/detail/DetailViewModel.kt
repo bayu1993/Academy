@@ -3,9 +3,10 @@ package com.example.academy.ui.detail
 import androidx.lifecycle.ViewModel
 import com.example.academy.data.MovieEntity
 import com.example.academy.data.TvShowEntity
+import com.example.academy.data.sources.MovieRepository
 import com.example.academy.utils.DataDummy
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(private val movieRepository: MovieRepository) : ViewModel() {
     private var movieId: Int? = null
     private var tvShowId: Int? = null
 
@@ -19,7 +20,7 @@ class DetailViewModel : ViewModel() {
 
     fun getMovie(): MovieEntity {
         lateinit var movie: MovieEntity
-        val movieEntities = DataDummy.generateDummyMovieList()
+        val movieEntities = movieRepository.getAllMovieList()
         for (movieEntity in movieEntities) {
             if (movieEntity.id == movieId) {
                 movie = movieEntity
@@ -31,7 +32,7 @@ class DetailViewModel : ViewModel() {
 
     fun getTvShow(): TvShowEntity{
         lateinit var tvShow: TvShowEntity
-        val tvShowEntities = DataDummy.generateDummyTvShow()
+        val tvShowEntities = movieRepository.getAllTvShow()
         for (tvShowEntity in tvShowEntities){
             if (tvShowEntity.id == tvShowId){
                 tvShow = tvShowEntity

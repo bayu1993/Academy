@@ -1,9 +1,10 @@
 package com.example.academy.ui.academy
 
 import androidx.lifecycle.ViewModel
+import com.example.academy.data.sources.MovieRepository
 import com.example.academy.utils.DataDummy
 
-class MovieViewModel: ViewModel() {
+class MovieViewModel(private val movieRepository: MovieRepository): ViewModel() {
 
-    fun getMovies() = DataDummy.generateDummyMovieList()
+    fun getMovies() = movieRepository.getAllMovieList()
 }

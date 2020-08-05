@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.academy.BuildConfig
 import com.example.academy.R
 import com.example.academy.data.TvShowEntity
 import com.example.academy.ui.detail.DetailCourseActivity
@@ -53,7 +54,7 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
                 }
 //                img_share.setOnClickListener { callback.onShareClick(tvShow) }
                 Glide.with(context)
-                    .load(tvShow.poster_path)
+                    .load("${BuildConfig.BASE_URL}${tvShow.poster_path}")
                     .apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
                             .error(R.drawable.ic_error)
