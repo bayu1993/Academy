@@ -1,15 +1,23 @@
 package com.example.academy.ui.bookmark
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.example.academy.data.MovieEntity
+import com.example.academy.data.TvShowEntity
 import com.example.academy.data.sources.MovieRepository
 import com.example.academy.utils.DataDummy
+import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Rule
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
+import java.util.*
 
 @RunWith(MockitoJUnitRunner::class)
 class TvShowViewModelTest {
@@ -19,17 +27,30 @@ class TvShowViewModelTest {
     @Mock
     private lateinit var repository: MovieRepository
 
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @Mock
+    private lateinit var observer: Observer<List<TvShowEntity>>
+
     @Before
-    fun setUp(){
+    fun setUp() {
         viewModel = TvShowViewModel(repository)
     }
 
     @Test
     fun getTvShow() {
-        Mockito.`when`(repository.getAllTvShow()).thenReturn(DataDummy.generateDummyTvShow())
-        val tvShowEntities = viewModel.getTvShow()
+        val dummyTvShow = DataDummy.generateDummyTvShow()
+        val tvShow = MutableLiveData<List<TvShowEntity>>()
+        tvShow.value = dummyTvShow
+
+        Mockito.`when`(repository.getAllTvShow()).thenReturn(tvShow)
+        val tvShowEntities = viewModel.getTvShow().value
         Mockito.verify(repository).getAllTvShow()
         assertNotNull(tvShowEntities)
-        assertEquals(10, tvShowEntities.size)
+        assertEquals(10, tvShowEntities?.size)
+
+        viewModel.getTvShow().observeForever(observer)
+        verify(observer).onChanged(dummyTvShow)
     }
 }
