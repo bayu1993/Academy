@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.academy.R
@@ -28,7 +29,11 @@ class AcademyFragment : Fragment() {
             val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
             val dataMovies = viewModel.getMovies()
             val movieAdapter = MovieAdapter()
-            movieAdapter.setCourseList(dataMovies)
+            progress_bar.visibility = View.VISIBLE
+            dataMovies.observe(this, Observer {
+                movie -> progress_bar.visibility = View.GONE
+                movieAdapter.setCourseList(movie)
+            })
 
             with(rv_academy) {
                 layoutManager = LinearLayoutManager(context)

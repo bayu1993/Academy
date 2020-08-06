@@ -1,7 +1,9 @@
 package com.example.academy.ui.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -35,12 +37,20 @@ class DetailCourseActivity : AppCompatActivity() {
                 supportActionBar?.title = "Detail ${getString(R.string.movie)}"
                 val movieId = extras.getInt(EXTRA_MOVIE)
                 viewModel.setSelectedMovie(movieId)
-                populateMovie(viewModel.getMovie())
+                progress_bar.visibility = View.VISIBLE
+                viewModel.getMovie()?.observe(this, Observer { movie ->
+                    progress_bar.visibility = View.GONE
+                    populateMovie(movie)
+                })
             } else if (intent.hasExtra(EXTRA_TV_SHOW)) {
                 supportActionBar?.title = "Detail ${getString(R.string.tv_show)}"
                 val tvShowId = extras.getInt(EXTRA_TV_SHOW)
                 viewModel.setSelectedTvShow(tvShowId)
-                populateTvShow(viewModel.getTvShow())
+                progress_bar.visibility = View.VISIBLE
+                viewModel.getTvShow()?.observe(this, Observer { tvShow ->
+                    progress_bar.visibility = View.GONE
+                    populateTvShow(tvShow)
+                })
             }
         }
     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.academy.R
@@ -27,7 +28,11 @@ class BookmarkFragment : Fragment() {
             val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
             val dataTvShow = viewModel.getTvShow()
             val tvShowAdapter = TvShowAdapter()
-            tvShowAdapter.setCourseList(dataTvShow)
+            progress_bar.visibility = View.VISIBLE
+            dataTvShow.observe(this, Observer { tvShow ->
+                progress_bar.visibility = View.GONE
+                tvShowAdapter.setCourseList(tvShow)
+            })
 
             with(rv_bookmark) {
                 layoutManager = LinearLayoutManager(context)
