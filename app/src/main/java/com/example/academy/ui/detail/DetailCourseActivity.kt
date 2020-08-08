@@ -30,7 +30,6 @@ class DetailCourseActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(
             this, factory
         )[DetailViewModel::class.java]
-        //val adapter = DetailCourseAdapter()
         val extras = intent.extras
         if (extras != null) {
             if (intent.hasExtra(EXTRA_MOVIE)) {

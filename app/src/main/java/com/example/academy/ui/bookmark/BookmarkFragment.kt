@@ -41,17 +41,4 @@ class BookmarkFragment : Fragment() {
             }
         }
     }
-
-//    override fun onShareClick(course: CourseEntity) {
-//        if (activity != null) {
-//            val mimeType = "text/plain"
-//            ShareCompat.IntentBuilder.from(activity as Activity).apply {
-//                setType(mimeType)
-//                setChooserTitle("Bagikan Aplikasi ini sekarang")
-//                setText(resources.getString(R.string.share_text, course.title))
-//                startChooser()
-//            }
-//        }
-//    }
-
 }

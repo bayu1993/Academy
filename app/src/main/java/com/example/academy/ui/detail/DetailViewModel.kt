@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.academy.data.MovieEntity
 import com.example.academy.data.TvShowEntity
 import com.example.academy.data.sources.MovieRepository
-import com.example.academy.utils.DataDummy
 
 class DetailViewModel(private val movieRepository: MovieRepository) : ViewModel() {
     private var movieId: Int? = null
@@ -23,5 +22,4 @@ class DetailViewModel(private val movieRepository: MovieRepository) : ViewModel(
 
     fun getTvShow(): LiveData<TvShowEntity>? = tvShowId?.let { movieRepository.getTv(it) }
 
-    //fun getModules() = DataDummy.generateDummyModules(movieId)
 }

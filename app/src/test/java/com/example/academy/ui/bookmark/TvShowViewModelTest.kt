@@ -3,21 +3,19 @@ package com.example.academy.ui.bookmark
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.example.academy.data.MovieEntity
 import com.example.academy.data.TvShowEntity
 import com.example.academy.data.sources.MovieRepository
 import com.example.academy.utils.DataDummy
 import com.nhaarman.mockitokotlin2.verify
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.*
 
 @RunWith(MockitoJUnitRunner::class)
 class TvShowViewModelTest {
